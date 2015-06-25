@@ -1,0 +1,40 @@
+web:
+  restart: always
+  image: qimagingsys/catmaid
+  expose:
+    - "8000"
+  ports:
+    - "8000:8000"
+  links:
+    - postgres:postgres
+  volumes:
+    - /tmp/static:/catmaid/django/static
+    - /catmaid/django/applications/catmaid/static
+    - /usr/local/lib/python2.7/dist-packages/django/
+  command: /usr/local/bin/gunicorn mysite.wsgi:application -w 2 -b :8000
+
+nginx:
+  restart: always
+  build: ./nginx/
+  ports:
+    - "80:80"
+  volumes:
+    - /tmp/static:/www/static
+  volumes_from:
+    - web
+  links:
+    - web:web
+
+postgres:
+  restart: always
+  image: dalekurt/postgres:9.3
+  volumes_from:
+    - data
+  ports:
+    - "5432:5432"
+
+data:
+  restart: always
+  image: dalekurt/postgres:9.3
+  volumes:
+    - /tmp/data:/var/lib/postgresql/data

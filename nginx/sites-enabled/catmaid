@@ -1,0 +1,28 @@
+upstream catmaid-wsgi {
+    server web:8000;
+}
+
+server {
+
+    listen 80;
+    server_name docker.local;
+    charset utf-8;
+
+    # Give access to Django's static files
+    location /static/ {
+        alias /www/static/;
+    }
+    
+    # And the uploaded or generated files
+    location /files/ {
+        alias /www/media/;
+    }
+
+    # Route all CATMAID Django WSGI requests to the Gevent WSGI server
+    location / {
+        proxy_pass http://web:8000/;
+        proxy_redirect http://web:8000/ http://$host/;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
+}
