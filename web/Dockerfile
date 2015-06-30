@@ -27,6 +27,7 @@ RUN mkdir /catmaid/media
 RUN chmod 0755 /catmaid/media
 
 WORKDIR /catmaid/django/projects
+
 VOLUME /catmaid/django/static
 VOLUME /catmaid/media
 

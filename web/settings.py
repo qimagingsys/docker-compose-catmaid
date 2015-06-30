@@ -66,7 +66,7 @@ LANGUAGE_CODE = 'en-gb'
 # This is used as a security measure by Django by validating a request's Host
 # header. This setting is required when DEBUG is False. A dot in front of the
 # host name indicated that also subdomains are allowed.
-ALLOWED_HOSTS = ['docker.local']
+ALLOWED_HOSTS = ['*']
 
 # Usually, CATMAID's Django back-end is not accessible on a domain's
 # root ('/'), but rather a sub-directory like 'catmaid'. Django needs
