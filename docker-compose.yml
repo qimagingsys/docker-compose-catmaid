@@ -1,6 +1,7 @@
 web:
   restart: always
-  image: qimagingsys/catmaid
+  build: web
+  # image: qimagingsys/catmaid
   expose:
     - "8000"
   links:
@@ -9,9 +10,8 @@ web:
     - /tmp/static:/catmaid/django/static
     - /catmaid/django/applications/catmaid/static
     - /usr/local/lib/python2.7/dist-packages/django/
+    - /tmp/media:/catmaid/media
   command: /usr/local/bin/gunicorn mysite.wsgi:application -w 2 -b :8000
-  ports:
-    - "8000:8000"
 
 nginx:
   restart: always
