@@ -1,8 +1,8 @@
 # docker-compose-catmaid
 
 ## Prerequisites
-Docker Engine [Mac](https://docs.docker.com/installation/mac/) [Ubuntu](https://docs.docker.com/installation/ubuntulinux/) or [Windows](https://docs.docker.com/installation/windows)
-[Docker Compose](https://docs.docker.com/compose/install/)
+* Docker Engine [Mac](https://docs.docker.com/installation/mac/) [Ubuntu](https://docs.docker.com/installation/ubuntulinux/) or [Windows](https://docs.docker.com/installation/windows)
+* [Docker Compose](https://docs.docker.com/compose/install/)
 
 ## Usage
 Clone the repository

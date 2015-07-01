@@ -1,7 +1,6 @@
 web:
   restart: always
-  build: web
-  # image: qimagingsys/catmaid
+  image: qimagingsys/catmaid
   expose:
     - "8000"
   links:
@@ -27,7 +26,7 @@ nginx:
 
 postgres:
   restart: always
-  image: dalekurt/postgres:9.3
+  image: qimagingsys/postgres:9.3
   volumes_from:
     - data
   ports:
@@ -35,6 +34,6 @@ postgres:
 
 data:
   restart: always
-  image: dalekurt/postgres:9.3
+  image: qimagingsys/postgres:9.3
   volumes:
     - /tmp/data:/var/lib/postgresql/data
